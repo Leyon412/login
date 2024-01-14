@@ -1,9 +1,10 @@
 // SignupPage.js
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { createUserWithEmailAndPassword, updateProfile as updateProfileAuth } from 'firebase/auth';
+import { getDatabase, ref, set } from 'firebase/database';
+import { auth } from '../config/firebase';
 import '../styles/SignupPage.css';
-import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
-import { auth } from "../config/firebase";
 
 const SignupPage = () => {
   const [email, setEmail] = useState('');
@@ -26,15 +27,24 @@ const SignupPage = () => {
       const user = userCredential.user;
 
       // Set the display name (username) in the user profile
-      await updateProfile(user, { displayName: username });
+      await updateProfileAuth(user, { displayName: username });
+
+      // Store additional user data in the Realtime Database
+      const db = getDatabase();
+      const userRef = ref(db, `users/${user.uid}`);
+      set(userRef, {
+        email: user.email,
+        username: username,
+        // Add more fields as needed
+      });
 
       // Redirect to another page upon successful signup
       navigate('/Home');
     } catch (err) {
       setSignupError('Email already exists. Please try logging in.');
-      console.log(err);
+      console.error(err);
     }
-  }
+  };
 
   return (
     <div className="signup-container">
@@ -83,7 +93,6 @@ const SignupPage = () => {
 
       {signupError && <p className="error-message">{signupError}</p>}
 
-      {/* Add a link/button for logging in */}
       <p>
         Already have an account? <Link to="/">Login</Link>
       </p>
