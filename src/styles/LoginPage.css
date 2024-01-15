@@ -1,39 +1,45 @@
-body {
+/* LoginPage.css */
+
+/* Common styles */
+.login-body {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100vh;
     margin: 0;
-    background-color:white;
+    background-color: white;
     font-family: 'Arial', sans-serif;
 }
 
 .login-container {
+    position: relative;
+    top: 100px;
     width: 100%;
     max-width: 400px;
+    margin: 0 auto; /* Center the container horizontally */
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     background-color: #ffffff;
 }
 
-h2 {
+.login-title {
     text-align: center;
-    color: #3498db;
+    color: #1e83c7;
 }
 
 .form-group {
     margin-bottom: 20px;
 }
 
-label {
+.form-label {
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
     color: #333;
 }
 
-input {
+.form-input {
     width: 100%;
     padding: 12px;
     box-sizing: border-box;
@@ -42,18 +48,42 @@ input {
     font-size: 16px;
 }
 
-button {
+.login-button {
     background-color: #3498db;
     color: white;
     padding: 14px 20px;
     border: none;
+    margin-left:14%;
     border-radius: 5px;
     cursor: pointer;
     font-size: 18px;
     transition: background-color 0.3s ease;
-    width: 100%;
+    width: 75%;
 }
 
-button:hover {
+.login-button:hover {
     background-color: #2980b9;
+}
+
+.error-message {
+    color: red;
+}
+
+.success-message {
+    color: green;
+}
+
+.forgot-password-link  {
+    cursor: pointer;
+    color: #3498db;
+}
+p {
+    text-align: center;
+}
+/* Responsive adjustments */
+@media only screen and (max-width: 600px) {
+    .login-container {
+        width:79%;
+        top: 100px; /* Adjust top margin for smaller screens */
+    }
 }

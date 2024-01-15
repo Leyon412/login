@@ -51,42 +51,46 @@ const SignupPage = () => {
       <h2>Sign Up</h2>
       <form>
         <div className="form-group">
-          <label htmlFor="email">Email:</label>
+          <label htmlFor="email" className="form-label">Email:</label>
           <input
             type="text"
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            className="form-input"
           />
         </div>
         <div className="form-group">
-          <label htmlFor="username">Username:</label>
+          <label htmlFor="username" className="form-label">Username:</label>
           <input
             type="text"
             id="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            className="form-input"
           />
         </div>
         <div className="form-group">
-          <label htmlFor="password">Password:</label>
+          <label htmlFor="password" className="form-label">Password:</label>
           <input
             type="password"
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            className="form-input"
           />
         </div>
         <div className="form-group">
-          <label htmlFor="confirmPassword">Confirm Password:</label>
+          <label htmlFor="confirmPassword" className="form-label">Confirm Password:</label>
           <input
             type="password"
             id="confirmPassword"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
+            className="form-input"
           />
         </div>
-        <button type="button" onClick={signUp}>
+        <button type="button" onClick={signUp} className="signup-button">
           Sign Up
         </button>
       </form>
